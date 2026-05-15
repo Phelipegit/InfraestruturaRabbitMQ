@@ -1,5 +1,6 @@
 package ProjectPhelipe.AplicacaoRabbitMQ.Rabbit;
 
+import ProjectPhelipe.AplicacaoRabbitMQ.model.MessageRequest;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +14,11 @@ public class PedidoProducer {
     }
 
 
-    public void enviarPedido(String mensagem) {
+    public void salvarDB(MessageRequest mensagem) {
         rabbitTemplate.convertAndSend(RabbitConfig.QUEUE,mensagem);
+    }
+
+    public void enviarEmail(MessageRequest mensagem) {
+        rabbitTemplate.convertAndSend(RabbitConfig.QUEUE_2,mensagem);
     }
 }
