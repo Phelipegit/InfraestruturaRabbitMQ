@@ -10,9 +10,16 @@ public class RabbitConfig {
 
     public static final String QUEUE = "pedidos-queue";
 
+    public static final String QUEUE_2 = "queue-2";
+
 
     @Bean
-    public Queue queue() {
+    public Queue queue1() {
         return new Queue(QUEUE,true);
+    }
+
+    @Bean
+    public Queue queue2() {
+        return new Queue(QUEUE_2,true);
     }
 }

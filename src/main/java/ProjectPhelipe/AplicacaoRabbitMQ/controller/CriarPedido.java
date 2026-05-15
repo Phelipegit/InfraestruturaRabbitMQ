@@ -1,6 +1,8 @@
 package ProjectPhelipe.AplicacaoRabbitMQ.controller;
 
 import ProjectPhelipe.AplicacaoRabbitMQ.Rabbit.PedidoProducer;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,7 +16,8 @@ public class CriarPedido {
         this.pedidoProducer = pedidoProducer;
     }
 
-    public String enviar(String mensagem) {
+    @PostMapping("/enviar")
+    public String enviar(@RequestBody String mensagem) {
         pedidoProducer.enviarPedido(mensagem);
         return "Pedido enviado";
     }

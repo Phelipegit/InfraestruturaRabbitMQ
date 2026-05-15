@@ -12,7 +12,7 @@ public class SpringSecurity {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.
                 csrf(csrf -> csrf.disable()).
-                authorizeHttpRequests(request -> request.anyRequest().permitAll());
+                authorizeHttpRequests(request -> request.requestMatchers("/api/enviar").permitAll());
 
 
         return http.build();
